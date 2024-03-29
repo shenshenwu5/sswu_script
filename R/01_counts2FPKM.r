@@ -30,12 +30,16 @@ head(FPKM)
 TPM <- t(t(Counts / t(Length)) * 1e6 / colSums(Counts / t(Length)))
 head(TPM)
 
+CPM <- t(t(Counts) / colSums(Counts)) * 1e6
+head(CPM)
+###########################################
 ot_tpm <- paste(prefix,'TPM.tsv',sep='_')
 ot_fpkm <- paste(prefix,'FPKM.tsv',sep='_')
-
+ot_cpm <- paste(prefix,'CPM.tsv',sep='_')
 # write.csv(TPM,file=ot_tpm,quote=F,sep='\t')
 # write.csv(FPKM,file=ot_fpkm,quote=F,'\t')
 
 write.table(TPM, file=ot_tpm, append=FALSE, quote=FALSE, sep="\t")
 write.table(FPKM, file=ot_fpkm, append=FALSE, quote=FALSE, sep="\t")
+write.table(CPM, file=ot_cpm, append=FALSE, quote=FALSE, sep="\t")
 
